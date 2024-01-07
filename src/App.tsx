@@ -48,7 +48,7 @@ function App() {
 			setAlert("password : 7 charachers minimum !");
 			setSubmit(false);
 		} else if (p1 !== p2) {
-			setAlert("password are not the same");
+			setAlert("passwords are not the same");
 			setSubmit(false);
 		} else {
 			setAlert("");

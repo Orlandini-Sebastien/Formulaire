@@ -8,6 +8,8 @@ import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 library.add(faEye, faEyeSlash);
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+import { motion } from "framer-motion";
+
 function App() {
 	const [name, setName] = useState("");
 	const [email, setEmail] = useState("");
@@ -70,16 +72,27 @@ function App() {
 			/>
 			<section>
 				{name !== "" && email !== "" && p1.length > 6 && p1 === p2 && submit ? (
-					<section>
+					<motion.section
+						animate={{ scale: submit ? 1 : 0 }}
+						initial={{ scale: 0 }}
+						transition={{ type: "spring", bounce: 0.6 }}
+					>
 						<div>
 							<label>{name}</label>
 							<label>{email}</label>
 							<label>{p1}</label>
 						</div>
-						<button onClick={handleSubmit}>Edit your information</button>
-					</section>
+						<motion.button whileTap={{ scale: 0.98 }} onClick={handleSubmit}>
+							Edit your information
+						</motion.button>
+					</motion.section>
 				) : (
-					<form onSubmit={handleSubmit}>
+					<motion.form
+						animate={{ scale: submit ? 0 : 1 }}
+						initial={{ scale: 0 }}
+						transition={{ type: "spring", bounce: 0.6 }}
+						onSubmit={handleSubmit}
+					>
 						<label>Name</label>
 						<input
 							type="text"
@@ -99,13 +112,15 @@ function App() {
 						<label>Password</label>
 
 						<div className="inputContainer">
-							<input
+							<motion.input
 								type={hideP1 ? "password" : "text"}
 								placeholder="azerty"
 								name="p1"
 								value={p1}
 								onChange={handleP1Change}
-								className={alert === "" ? "" : "borderRed"}
+								className={(alert !== "password are not the same" && alert !== "password : 7 charachers minimum !" ) ? "" : "borderRed"}
+							
+								//transition={{ type: "spring", bounce: 60 }}
 							/>
 							<FontAwesomeIcon
 								icon={hideP1 ? "eye" : "eye-slash"}
@@ -121,7 +136,7 @@ function App() {
 								name="p2"
 								value={p2}
 								onChange={handleP2Change}
-								className={alert === "" ? "" : "borderRed"}
+								className={(alert !== "password are not the same" && alert !== "password : 7 charachers minimum !" ) ? "" : "borderRed"}
 							/>
 							<FontAwesomeIcon
 								icon={hideP2 ? "eye" : "eye-slash"}
@@ -129,8 +144,8 @@ function App() {
 							/>
 						</div>
 						<p className="alert">{alert}</p>
-						<button>Register</button>
-					</form>
+						<motion.button whileTap={{ scale: 0.98 }}>Register</motion.button>
+					</motion.form>
 				)}
 			</section>
 			<Footer />

@@ -1,17 +1,8 @@
-input {
-	background: #e5e5e5;
-	line-height: 40px;
-	border: none;
-	border-radius: 5px;
-	font-size: 24px;
-	width: 600px;
+@import url("https://fonts.googleapis.com/css2?family=Merienda:wght@300;400;500;600;700&display=swap");
+body {
+	font-family: "Merienda", cursive;
 }
-label {
-	font-size: 24px;
-	font-weight: 600;
-	margin-top: 10px;
-	margin-bottom: 10px;
-}
+
 header,
 footer,
 form,
@@ -27,10 +18,27 @@ header,
 footer {
 	justify-content: center;
 }
+header {
+	font-size: 36px;
+}
 form {
 	display: flex;
 	flex-direction: column;
 	line-height: 30px;
+}
+input {
+	background: #e5e5e5;
+	line-height: 40px;
+	border: none;
+	border-radius: 5px;
+	font-size: 24px;
+	width: 600px;
+}
+label {
+	font-size: 24px;
+	font-weight: 600;
+	margin-top: 10px;
+	margin-bottom: 10px;
 }
 button {
 	margin-top: 20px;
@@ -52,33 +60,51 @@ section > div {
 	width: 600px;
 	margin: 0 auto;
 }
-header {
-	font-size: 36px;
-}
+
 section > div {
 	background: #e5e5e5;
 	padding: 10px;
 	border-radius: 5px;
 	margin-bottom: 10px;
 }
+.alert {
+	color: red;
+}
+.borderRed {
+	border: solid 1px red;
+	animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
 
-.alert{
-    color: red;
-}
-.borderRed{
-    border: solid 1px red;
-}
-.inputContainer{
+.inputContainer {
 	position: relative;
 	width: 600px;
 }
-.fa-eye{
-	position : absolute;
-	top : 28%;
+.fa-eye {
+	position: absolute;
+	top: 28%;
 	right: 4%;
 }
-.fa-eye-slash{
-		position : absolute;
-	top : 28%;
+.fa-eye-slash {
+	position: absolute;
+	top: 28%;
 	right: 4%;
+}
+@keyframes shake {
+	10%,
+	90% {
+		transform: translate3d(-1px, 0, 0);
+	}
+	20%,
+	80% {
+		transform: translate3d(2px, 0, 0);
+	}
+	30%,
+	50%,
+	70% {
+		transform: translate3d(-4px, 0, 0);
+	}
+	40%,
+	60% {
+		transform: translate3d(4px, 0, 0);
+	}
 }

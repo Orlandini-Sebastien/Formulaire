@@ -19,6 +19,7 @@ function App() {
 	const [alert, setAlert] = useState("");
 	const [hideP1, sethideP1] = useState(true);
 	const [hideP2, sethideP2] = useState(true);
+	const [shake, setShake] = useState(false);
 
 	const handleNameChange = (event: any) => {
 		const value = event.target.value;
@@ -47,9 +48,17 @@ function App() {
 		} else if (p1.length < 6) {
 			setAlert("password : 7 charachers minimum !");
 			setSubmit(false);
+			setShake(true);
+			setTimeout(() => {
+				setShake(false);
+			}, 1000);
 		} else if (p1 !== p2) {
 			setAlert("passwords are not the same");
 			setSubmit(false);
+			setShake(true);
+			setTimeout(() => {
+				setShake(false);
+			}, 1000);
 		} else {
 			setAlert("");
 			setSubmit((prev) => !prev);
@@ -118,8 +127,13 @@ function App() {
 								name="p1"
 								value={p1}
 								onChange={handleP1Change}
-								className={(alert !== "password are not the same" && alert !== "password : 7 charachers minimum !" ) ? "" : "borderRed"}
-							
+								className={` ${
+									alert === "passwords are not the same" ||
+									alert === "password : 7 charachers minimum !"
+										? "borderRed"
+										: ""
+								}  ${shake ? "shake" : ""}`}
+
 								//transition={{ type: "spring", bounce: 60 }}
 							/>
 							<FontAwesomeIcon
@@ -136,7 +150,12 @@ function App() {
 								name="p2"
 								value={p2}
 								onChange={handleP2Change}
-								className={(alert !== "password are not the same" && alert !== "password : 7 charachers minimum !" ) ? "" : "borderRed"}
+								className={` ${
+									alert === "passwords are not the same" ||
+									alert === "password : 7 charachers minimum !"
+										? "borderRed"
+										: ""
+								}  ${shake ? "shake" : ""}`}
 							/>
 							<FontAwesomeIcon
 								icon={hideP2 ? "eye" : "eye-slash"}

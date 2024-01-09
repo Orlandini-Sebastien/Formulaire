@@ -46,7 +46,7 @@ function App() {
 			setAlert("email is require !");
 			setSubmit(false);
 		} else if (p1.length < 6) {
-			setAlert("password : 7 charachers minimum !");
+			setAlert("7 charachers minimum !");
 			setSubmit(false);
 			setShake(true);
 			setTimeout(() => {
@@ -79,19 +79,26 @@ function App() {
 						: "Create account"
 				}
 			/>
-			<section>
+
+			<section className="  flex justify-center leading-4 flex-row font-semibold w-full my-2 sm:text-lg md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl">
 				{name !== "" && email !== "" && p1.length > 6 && p1 === p2 && submit ? (
-					<motion.section
+					<motion.section 
 						animate={{ scale: submit ? 1 : 0 }}
 						initial={{ scale: 0 }}
 						transition={{ type: "spring", bounce: 0.6 }}
+						className="w-2/3 "
+						
 					>
-						<div>
-							<label>{name}</label>
-							<label>{email}</label>
-							<label>{p1}</label>
+						<div className="my-2 flex flex-col bg-slate-200">
+							<label className="my-2">{name}</label>
+							<label className="my-2">{email}</label>
+							<label className="my-2">{p1}</label>
 						</div>
-						<motion.button whileTap={{ scale: 0.98 }} onClick={handleSubmit}>
+						<motion.button
+							whileTap={{ scale: 0.98 }}
+							onClick={handleSubmit}
+							className="my-8 border-none rounded bg-violet-500 text-white w-full"
+						>
 							Edit your information
 						</motion.button>
 					</motion.section>
@@ -101,26 +108,29 @@ function App() {
 						initial={{ scale: 0 }}
 						transition={{ type: "spring", bounce: 0.6 }}
 						onSubmit={handleSubmit}
+						className="flex flex-col my-2 w-2/3"
 					>
-						<label>Name</label>
+						<label className="my-2">Name</label>
 						<input
 							type="text"
 							placeholder="My name"
 							name="name"
 							value={name}
 							onChange={handleNameChange}
+							className=" bg-slate-200 leading-4 border-none rounded"
 						/>
-						<label>Email</label>
+						<label className="my-2">Email</label>
 						<input
 							type="email"
 							placeholder="sebi@gmail.com"
 							name="email"
 							value={email}
 							onChange={handleEmailChange}
+							className=" bg-slate-200 leading-4 border-none rounded"
 						/>
-						<label>Password</label>
 
-						<div className="inputContainer">
+						<label className="my-2">Password</label>
+						<div className="relative ">
 							<motion.input
 								type={hideP1 ? "password" : "text"}
 								placeholder="azerty"
@@ -129,21 +139,23 @@ function App() {
 								onChange={handleP1Change}
 								className={` ${
 									alert === "passwords are not the same" ||
-									alert === "password : 7 charachers minimum !"
+									alert === "7 charachers minimum !"
 										? "borderRed"
 										: ""
-								}  ${shake ? "shake" : ""}`}
+								}  ${
+									shake ? "shake" : ""
+								}  bg-slate-200 leading-4 border-none rounded w-full `}
 
-								//transition={{ type: "spring", bounce: 60 }}
 							/>
 							<FontAwesomeIcon
 								icon={hideP1 ? "eye" : "eye-slash"}
 								onClick={handleHideP1}
+								className="absolute top-1.5 right-2 "
 							/>
 						</div>
 
-						<label>Confirm your Password</label>
-						<div className="inputContainer">
+						<label className="my-2">Confirm your Password</label>
+						<div className="relative">
 							<input
 								type={hideP2 ? "password" : "text"}
 								placeholder="azerty"
@@ -152,18 +164,26 @@ function App() {
 								onChange={handleP2Change}
 								className={` ${
 									alert === "passwords are not the same" ||
-									alert === "password : 7 charachers minimum !"
+									alert === "7 charachers minimum !"
 										? "borderRed"
 										: ""
-								}  ${shake ? "shake" : ""}`}
+								}  ${
+									shake ? "shake" : ""
+								}  bg-slate-200 leading-4 border-none rounded relative w-full `}
 							/>
 							<FontAwesomeIcon
 								icon={hideP2 ? "eye" : "eye-slash"}
 								onClick={handleHideP2}
+								className="absolute top-1.5 right-2 "
 							/>
 						</div>
-						<p className="alert">{alert}</p>
-						<motion.button whileTap={{ scale: 0.98 }}>Register</motion.button>
+						<p className="text-red-500 my-2 sm:text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl">{alert}</p>
+						<motion.button
+							whileTap={{ scale: 0.98 }}
+							className="my-8 border-none rounded bg-violet-500 text-white "
+						>
+							Register
+						</motion.button>
 					</motion.form>
 				)}
 			</section>

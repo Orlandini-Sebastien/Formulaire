@@ -1,75 +1,18 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
 @import url("https://fonts.googleapis.com/css2?family=Merienda:wght@300;400;500;600;700&display=swap");
 body {
 	font-family: "Merienda", cursive;
 }
 
-header,
-footer,
-form,
-p {
-	display: flex;
-	margin: 0 auto;
-	width: 600px;
-	margin-top: 20px;
-	margin-bottom: 20px;
-	font-weight: 600;
-}
-header,
-footer {
-	justify-content: center;
-}
-header {
-	font-size: 36px;
-}
-form {
-	display: flex;
-	flex-direction: column;
-	line-height: 30px;
-}
-input {
-	background: #e5e5e5;
-	line-height: 40px;
-	border: none;
-	border-radius: 5px;
-	font-size: 24px;
-	width: 600px;
-}
-label {
-	font-size: 24px;
-	font-weight: 600;
-	margin-top: 10px;
-	margin-bottom: 10px;
-}
-button {
-	margin-top: 20px;
-	font-size: 24px;
-	font-weight: 700;
-	border: none;
-	border-radius: 5px;
-	background: #574bcc;
-	color: white;
-}
 a {
 	padding-left: 5px;
 	padding-right: 5px;
 }
-section,
-section > div {
-	display: flex;
-	flex-direction: column;
-	width: 600px;
-	margin: 0 auto;
-}
 
-section > div {
-	background: #e5e5e5;
-	padding: 10px;
-	border-radius: 5px;
-	margin-bottom: 10px;
-}
-.alert {
-	color: red;
-}
+
 .borderRed {
 	border: solid 1px red;
 
@@ -78,20 +21,6 @@ section > div {
 		animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
 }
 
-.inputContainer {
-	position: relative;
-	width: 600px;
-}
-.fa-eye {
-	position: absolute;
-	top: 28%;
-	right: 4%;
-}
-.fa-eye-slash {
-	position: absolute;
-	top: 28%;
-	right: 4%;
-}
 @keyframes shake {
 	10%,
 	90% {
